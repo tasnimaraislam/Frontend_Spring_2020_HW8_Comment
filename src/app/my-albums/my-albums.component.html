@@ -1,0 +1,29 @@
+<div class="card-header text-center">
+    <h3>Albums</h3>
+</div>
+<!--
+    {{albums}}
+    <ul>
+    <li *ngFor="let album of albums">
+      {{ album.title }} | {{ album.id }} | {{album.coverPhotoUrl}}
+    </li>
+  </ul>
+--> 
+
+<nav class="navbar navbar-light bg-light">
+      <a [routerLink]="['/create-album']" class="btn btn-outline-danger" type="submit">Create Album</a>
+</nav>
+
+<div class="row" >
+    <div class="col-sm-4" *ngFor="let album of albums">
+        <div class="card" style="width: 18rem;" >
+            <img class="card-img-top" src="{{album.coverPhotoUrl}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ album.title }}</h5>
+                <p class="card-text">{{ album.id }}</p>
+                <a [routerLink]="['/album', album.id]" class="btn btn-primary">Go to Album</a>
+            </div>
+        </div>
+    </div>
+</div>
+

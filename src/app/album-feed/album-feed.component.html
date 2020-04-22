@@ -1,0 +1,17 @@
+<div class="card-header text-center">
+    <h3>Album Feed</h3>
+</div>
+ <br>
+<div class="row" *ngIf= "albums" >
+    <div class="col-sm-4" *ngFor="let album of albums">
+        <div class="card" style="width: 18rem;" >
+            <img class="card-img-top" src="{{album.coverPhotoUrl}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ album.title }}</h5>
+                <p class="card-text">{{ album.id }}</p>
+                <a [routerLink]="['/album', album.id]" class="btn btn-primary">Go to Album</a>
+            </div>
+        </div>
+    </div>
+</div>
+

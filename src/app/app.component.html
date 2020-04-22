@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">PHOTOTASTIC</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" *ngIf="authenticationService.userData | async">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/profile/me']">Profile</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/albums']" >Albums</a>
+      </li>
+    </ul>
+          
+    <span *ngIf="authenticationService.userData | async">Hello <strong>{{ (authenticationService.userData | async)?.email }}</strong></span> &nbsp; &nbsp;
+
+      <div class="form-group row" *ngIf="!(authenticationService.userData | async)" style="margin-left:auto; margin-right:0;" >
+        
+        <div class="col-xs-2">  
+          <input class="form-control" type="text" [(ngModel)]="email" placeholder="email"> 
+        </div> &nbsp; &nbsp;
+        
+        <div class="col-xs-2"> 
+          <input class="form-control" type="password" [(ngModel)]="password" placeholder="password"> 
+        </div> &nbsp; &nbsp;
+
+          <button class="btn btn-outline-danger my-2 my-sm-0" (click)="signUp()">Sign Up</button>&nbsp;&nbsp;
+          <button class="btn btn-outline-danger my-2 my-sm-0" (click)="signIn()">Login</button>
+      </div>
+
+      <button class="btn btn-outline-danger my-2 my-sm-0" (click)="signOut()" *ngIf="authenticationService.userData | async">Logout</button>
+  </div>
+</nav>
+
+
+<router-outlet></router-outlet>

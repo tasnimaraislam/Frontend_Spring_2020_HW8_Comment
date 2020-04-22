@@ -1,0 +1,14 @@
+<div class="card-header text-center">
+    <h3>Upload Photos</h3>
+</div>
+
+<nav class="navbar navbar-light bg-light">
+    <a [routerLink]="['/album', albumId]" class="btn btn-outline-danger" type="submit">
+        Go Back To ALbum
+    </a>
+</nav>
+
+<angular-file-uploader 
+    [config]="afuConfig"
+    (ApiResponse)="uploadPhoto($event)">
+</angular-file-uploader>

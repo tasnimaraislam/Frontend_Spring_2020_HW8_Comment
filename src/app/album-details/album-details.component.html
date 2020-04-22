@@ -1,0 +1,28 @@
+<div class="card-header text-center">
+    <h3>Photos</h3>
+</div>
+
+<nav class="navbar navbar-light bg-light">
+    <a [routerLink]="['/upload-photo', albumId]" class="btn btn-outline-danger" type="submit">
+        Upload Photo
+    </a>
+</nav>
+
+<div class="row" >
+    <div class="col-sm-4" *ngFor="let photo of photos">
+        <div class="card" style="width: 18rem;" >
+            <img class="card-img-top" src="{{photo.thumbnailUrl}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ photo.createdBy }}</h5>
+                <p class="card-text">{{ photo.dateCreated }}</p>
+                <a [routerLink]="['/photo', photo.id]" class="btn btn-primary">Go to Photo</a>
+                <br><br>
+                <input #profile type = "button" name= "{{photo.photoUrl}}" (click)="makeProfilePhoto(profile.name)" class = "btn btn-success" value = "Make My Profile Photo">
+                <br><br>
+                <input #album type = "button" name= "{{photo.photoUrl}}" (click)="makeAlbumCover(album.name)" class = "btn btn-info" value = "Make Album Cover">
+            </div>
+        </div>
+    </div>
+</div>
+
+
